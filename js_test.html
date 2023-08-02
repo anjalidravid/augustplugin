@@ -1,0 +1,64 @@
+<textarea name="txtScript" id="word_count" cols="30" rows="10"></textarea>
+<br>
+Total word count: <span id="display_count">0</span> words. Words left: <span id="word_left">200</span>
+
+<h1>Add Element After Dynamic p Using jQuery</h1>
+
+<div>
+<p>Apple</p>
+<p>Orange</p>
+<p>Banana</p>
+<p>Kiwi</p>
+<p>Grapes</p>
+<p>Mango</p>
+</div>
+
+<h1>Delete Child Elements Except 1st One</h1>
+
+<div id="exercises">
+    <p>PHP Exercises</p>
+    <p>WordPress Exercises</p>
+    <p>Drupal Exercises</p>
+    <p>Python Exercises</p>
+    <p>.NET Exercises</p>
+    <p>Laravel Exercises</p>
+    <p>ReactJS Exercises</p>
+    </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $(document).ready(function() {
+    // Select all child elements starting from the second one and remove them
+    $("#exercises").children(":gt(0)").remove();
+});
+
+        // Create a new <p> element
+var newParagraph = $("<p>").text("Watermelon");
+
+// Append the new <p> element after the last <p> element
+$("div").append(newParagraph);
+    $("#word_count").on('keyup', function() {
+      var words = 0;
+  
+      if ((this.value.match(/\S+/g)) != null) {
+        words = this.value.match(/\S+/g).length;
+      }
+  
+      if (words > 200) {
+        // Split the string on first 200 words and rejoin on spaces
+        var trimmed = $(this).val().split(/\s+/, 200).join(" ");
+        // Add a space at the end to make sure more typing creates new words
+        $(this).val(trimmed + " ");
+      }
+      else {
+        $('#display_count').text(words);
+        $('#word_left').text(200-words);
+      }
+    });
+  }); 
+</script>
